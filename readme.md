@@ -63,10 +63,19 @@ So, the next time we want to notify the store that an item was deleted we just n
 store.dispatch(@item_delete[1])
 ```
 
-Finally because of the inmutable nature of the state, whenever you need to know it you can just read from it:
+Because of the inmutable nature of the state, whenever you need to know it you can just read from it:
 ```
 store.state[:user].name
 ```
 And you can even keep a screenshot of a state that represent a specific point in the time of your app.
+
+You can subscribe to a store in order to get 'notified' of every change to it:
+```
+def listener(state)
+    @counter = state
+end
+store.subscribe method :listener     
+```
+That way the **listener** method will be called any time that the store is changed.
 
 ### That's all, I hope it's helpful to someone :+1:
